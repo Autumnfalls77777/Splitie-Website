@@ -1,11 +1,4 @@
-import {
-  apkIsConfigured,
-  checksumIsConfigured,
-  downloadHref,
-  githubIsConfigured,
-  GITHUB_URL,
-  SHA256,
-} from '@/config';
+import { APK_URL, RELEASES_URL, SHA256 } from '@/config';
 import { CopyButton } from './CopyButton';
 import { Icon } from './Icons';
 
@@ -44,17 +37,15 @@ export function Install() {
             </p>
           </div>
 
-          {apkIsConfigured ? (
-            <a href={downloadHref} className="btn btn-primary">
-              <Icon name="download" size={17} />
-              Download APK
-            </a>
-          ) : (
-            <span className="btn btn-on-dark cursor-not-allowed opacity-60" aria-disabled="true">
-              <Icon name="download" size={17} />
-              APK link coming soon
-            </span>
-          )}
+          <a
+            href={APK_URL}
+            download="splitie.apk"
+            className="btn btn-primary"
+            title="Download the Splitie APK"
+          >
+            <Icon name="download" size={17} />
+            Download APK
+          </a>
         </div>
 
         <ol className="install-steps">
@@ -70,9 +61,9 @@ export function Install() {
         </ol>
 
         <div className="install-details">
-          <details className="install-detail">
+          <details className="install-detail" id="trust" open>
             <summary>
-              Verify the download
+              Trust: verify the download
               <Icon name="chevron-down" size={18} />
             </summary>
             <div className="install-detail-body">
@@ -81,21 +72,10 @@ export function Install() {
                 you downloaded before installing.
               </p>
 
-              {checksumIsConfigured ? (
-                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-start">
-                  <code className="code-box code-box-dark flex-1">{SHA256}</code>
-                  <CopyButton
-                    value={SHA256}
-                    label="Copy hash"
-                    className="btn-on-dark"
-                  />
-                </div>
-              ) : (
-                <p className="mt-4">
-                  The checksum is added here with each APK release. Until then, only install the
-                  file from the official link on this page.
-                </p>
-              )}
+              <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-start">
+                <code className="code-box code-box-dark flex-1">{SHA256}</code>
+                <CopyButton value={SHA256} label="Copy hash" className="btn-on-dark" />
+              </div>
 
               <div className="mt-5 grid gap-3">
                 <div>
@@ -120,23 +100,16 @@ export function Install() {
               </div>
 
               <div className="mt-5">
-                {githubIsConfigured ? (
-                  <a
-                    href={GITHUB_URL}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="inline-flex items-center gap-2 font-semibold"
-                  >
-                    <Icon name="github" size={16} />
-                    GitHub releases
-                    <Icon name="arrow-right" size={14} />
-                  </a>
-                ) : (
-                  <p className="inline-flex items-center gap-2 text-[0.8rem] text-contrast-ink/55">
-                    <Icon name="github" size={16} />
-                    GitHub releases link is coming soon.
-                  </p>
-                )}
+                <a
+                  href={RELEASES_URL}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 font-semibold"
+                >
+                  <Icon name="github" size={16} />
+                  Releases
+                  <Icon name="arrow-right" size={14} />
+                </a>
               </div>
             </div>
           </details>

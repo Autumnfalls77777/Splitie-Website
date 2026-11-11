@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { apkIsConfigured, downloadHref } from '@/config';
+import { APK_URL } from '@/config';
 import { Icon } from './Icons';
 import { Logo } from './Logo';
 
@@ -51,14 +51,11 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <a
-            href={downloadHref}
+            href={APK_URL}
+            download="splitie.apk"
             className="btn btn-primary btn-sm"
-            title={apkIsConfigured ? 'Download the Splitie APK' : 'APK link coming soon'}
-            aria-label={
-              apkIsConfigured
-                ? 'Download the Splitie APK'
-                : 'Download Splitie APK (link coming soon)'
-            }
+            title="Download the Splitie APK"
+            aria-label="Download the Splitie APK"
           >
             <Icon name="download" size={16} />
             <span className="sm:hidden">APK</span>

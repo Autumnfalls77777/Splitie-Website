@@ -1,35 +1,23 @@
 /**
- * Everything you must fill in before publishing the site.
+ * Single source of truth for everything the public site links to or shows.
  *
- * Placeholders start with "TODO". The UI detects this and renders honest
- * "coming soon" states instead of inventing a download URL or checksum.
+ * These values are public by design: they point at a downloadable APK and a
+ * public releases page. Keep secrets (server keys, tokens, private URLs) out
+ * of this file — this repository is public.
  */
 
-/** Direct link to the APK file (GitHub Releases asset, Cloudflare R2, etc.). */
-export const APK_URL = 'TODO_APK_URL';
+/** Direct link to the latest signed APK asset. */
+export const APK_URL =
+  'https://github.com/Autumnfalls77777/Splitie-Website/releases/latest/download/splitie.apk';
 
 /** SHA-256 of the exact APK served at APK_URL. Lowercase hex, 64 characters. */
-export const SHA256 = 'TODO_SHA256_CHECKSUM';
+export const SHA256 = '2a83f521fbada153bd545add6ad3faba4d9f463e259b81e8a35d10b3a05daab9';
 
-/** Public releases page, e.g. https://github.com/<owner>/<repo>/releases */
-export const GITHUB_URL = 'TODO_GITHUB_URL';
+/** Public releases page for the site repo (the app repo itself is private). */
+export const GITHUB_URL = 'https://github.com/Autumnfalls77777/Splitie-Website';
 
-/** Support / privacy / bug reports. Keep this out of the public repo. */
-export const CONTACT_EMAIL = 'TODO_CONTACT_EMAIL';
+/** Public releases list. */
+export const RELEASES_URL = `${GITHUB_URL}/releases`;
 
-export function isConfigured(value: string): boolean {
-  return value.length > 0 && !value.startsWith('TODO');
-}
-
-/** Only accept real HTTPS destinations; anything else falls back to #install. */
-function isHttpsUrl(value: string): boolean {
-  return isConfigured(value) && value.startsWith('https://');
-}
-
-export const apkIsConfigured = isHttpsUrl(APK_URL);
-export const checksumIsConfigured = /^[a-f0-9]{64}$/i.test(SHA256);
-export const githubIsConfigured = isHttpsUrl(GITHUB_URL);
-export const contactIsConfigured = isConfigured(CONTACT_EMAIL);
-
-/** Where download buttons point until APK_URL is filled in. */
-export const downloadHref = apkIsConfigured ? APK_URL : '#install';
+/** Support / privacy / bug reports. */
+export const CONTACT_EMAIL = 'prabaljaiswal69420@gmail.com';

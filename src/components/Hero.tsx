@@ -1,4 +1,5 @@
-import { apkIsConfigured, downloadHref } from '@/config';
+import { APK_URL } from '@/config';
+import { latestUpdate } from '@/updates';
 import { Icon } from './Icons';
 import { PhoneMockup } from './PhoneMockup';
 
@@ -20,9 +21,10 @@ export function Hero() {
 
             <div className="hero-actions">
               <a
-                href={downloadHref}
+                href={APK_URL}
+                download="splitie.apk"
                 className="btn btn-primary"
-                title={apkIsConfigured ? 'Download the Splitie APK' : 'APK link coming soon'}
+                title="Download the Splitie APK"
               >
                 <Icon name="download" size={17} />
                 Download APK
@@ -33,11 +35,9 @@ export function Hero() {
               </a>
             </div>
 
-            {!apkIsConfigured ? (
-              <p className="hero-status">
-                The APK link is being finalised. The install steps below show what to expect.
-              </p>
-            ) : null}
+            <p className="hero-status">
+              v{latestUpdate.version} · Android 7.0+ · Direct APK, no Play Store needed.
+            </p>
           </div>
         </div>
 

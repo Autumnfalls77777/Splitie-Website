@@ -1,8 +1,8 @@
 /**
  * Single source of truth for the website's release metadata.
  *
- * To publish a new release, add an entry at the TOP of `updates` and fill in
- * the four values in config.ts. Nothing else needs to change.
+ * To publish a new release, add an entry at the TOP of `updates`, update the
+ * version in app.json, and point APK_URL/SHA256 at the new build in config.ts.
  */
 
 export type UpdateType = 'apk' | 'auto';
@@ -19,16 +19,17 @@ export type UpdateEntry = {
 };
 
 export const updates: UpdateEntry[] = [
-  // Update this entry (and add older ones, newest first) to match the builds
-  // you actually publish. Dates are YYYY-MM-DD.
   {
     version: '1.0.0',
-    date: '2026-11-10',
-    title: 'Initial Android release',
+    date: '2026-11-11',
+    title: 'Initial release',
     notes: [
-      'Create trips, add shared expenses and split them equally, exactly, by percent or by shares.',
-      'See the fewest transfers that settle the trip, then record a payment without moving money in the app.',
-      'Personal budgets, category charts, CSV export, join codes and settle-up reminders.',
+      'First public release of Splitie for Android.',
+      'Create trips and add shared expenses that split equally, exactly, by percent or by shares.',
+      'See the fewest transfers that settle a trip, then record a payment as made.',
+      'Keep a separate personal ledger with monthly budgets, category charts and a CSV export.',
+      'Join a trip with a code, set settle-up reminders and sign in with Google.',
+      'Crashes are reported so fixes can ship over the air; native changes arrive as a new APK.',
     ],
     type: 'apk',
   },

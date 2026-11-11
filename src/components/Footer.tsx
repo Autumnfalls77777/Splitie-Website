@@ -1,4 +1,4 @@
-import { contactIsConfigured, CONTACT_EMAIL, githubIsConfigured, GITHUB_URL } from '@/config';
+import { CONTACT_EMAIL, RELEASES_URL } from '@/config';
 import { latestUpdate } from '@/updates';
 import { Icon } from './Icons';
 import { Logo } from './Logo';
@@ -25,25 +25,21 @@ export function Footer() {
             <p className="footer-note">
               A small, independent expense splitter for trips, dinners and shared homes.
             </p>
-            {contactIsConfigured ? (
-              <a href={`mailto:${CONTACT_EMAIL}`} className="footer-mail">
-                <Icon name="mail" size={14} />
-                {CONTACT_EMAIL}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="footer-mail">
+              <Icon name="mail" size={14} />
+              {CONTACT_EMAIL}
+            </a>
+            <p className="mt-3">
+              <a
+                href={RELEASES_URL}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-2 text-[0.86rem] font-semibold text-ink underline decoration-line-strong underline-offset-4"
+              >
+                <Icon name="github" size={14} />
+                Releases
               </a>
-            ) : null}
-            {githubIsConfigured ? (
-              <p className="mt-3">
-                <a
-                  href={GITHUB_URL}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex items-center gap-2 text-[0.86rem] font-semibold text-ink underline decoration-line-strong underline-offset-4"
-                >
-                  <Icon name="github" size={14} />
-                  GitHub
-                </a>
-              </p>
-            ) : null}
+            </p>
           </div>
 
           <nav aria-label="Footer">
